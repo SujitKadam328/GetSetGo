@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: 30a0d816118fe354d86e05d1fddb8247
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6578504456946514318
+    second: Fruit Sprite Sheet_0
+  - first:
+      213: -1671279511469949799
+    second: Fruit Sprite Sheet_1
+  - first:
+      213: -8948120171100587214
+    second: Fruit Sprite Sheet_2
+  - first:
+      213: -2665584563593749546
+    second: Fruit Sprite Sheet_3
+  - first:
+      213: 137406295764701333
+    second: Fruit Sprite Sheet_4
+  - first:
+      213: -767113011336183068
+    second: Fruit Sprite Sheet_5
+  - first:
+      213: -5924207148039669004
+    second: Fruit Sprite Sheet_6
+  - first:
+      213: 3705386228444822894
+    second: Fruit Sprite Sheet_7
+  - first:
+      213: 3792676663581337927
+    second: Fruit Sprite Sheet_8
+  - first:
+      213: 8631646634362601950
+    second: Fruit Sprite Sheet_9
+  - first:
+      213: 7570372406796972741
+    second: Fruit Sprite Sheet_10
+  - first:
+      213: 3930058187136822409
+    second: Fruit Sprite Sheet_11
+  - first:
+      213: 7232056607716372944
+    second: Fruit Sprite Sheet_12
+  - first:
+      213: -2828371801765701865
+    second: Fruit Sprite Sheet_13
+  - first:
+      213: 9212271322925729123
+    second: Fruit Sprite Sheet_14
+  - first:
+      213: -1796613346353320822
+    second: Fruit Sprite Sheet_15
+  - first:
+      213: -5964914140443102714
+    second: Fruit Sprite Sheet_16
+  - first:
+      213: 1110555679345236658
+    second: Fruit Sprite Sheet_17
+  - first:
+      213: -3825239338965034458
+    second: Fruit Sprite Sheet_18
+  - first:
+      213: -5837924529780272958
+    second: Fruit Sprite Sheet_19
+  - first:
+      213: -8106677508257385706
+    second: Fruit Sprite Sheet_20
+  - first:
+      213: 7355288720711417930
+    second: Fruit Sprite Sheet_21
+  - first:
+      213: -4900041198330555238
+    second: Fruit Sprite Sheet_22
+  - first:
+      213: -7974851335012356266
+    second: Fruit Sprite Sheet_23
+  - first:
+      213: 6818968670833884683
+    second: Fruit Sprite Sheet_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1580
+        width: 262
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fee4e21e340eb24c9c76100da46e211
+      internalID: -1547680025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1580
+        width: 274
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820c42ea5965c474c85695cba12bf5fe
+      internalID: 1485878251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 1572
+        width: 261
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d4fdc39e26d5d48b695cbfe952a4ed
+      internalID: -531236737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 1580
+        width: 283
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ec652a563fb62145a454bfaeabda5bd
+      internalID: -1582860227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 1582
+        width: 268
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84876bba816f494496dd065ffd36559
+      internalID: -930760366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 1174
+        width: 263
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68fb4204d749f64a8f6eccaee5e70c5
+      internalID: -1538519009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1157
+        width: 263
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a6d6f9009fd404aaec4a56fe21e1ce
+      internalID: -540991890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1147
+        width: 284
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e930c713016c342afe6a035a3a79f2
+      internalID: -310785561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 1151
+        width: 322
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f00cbc526bd28340add5bcc75ff3d07
+      internalID: -1907460523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 1173
+        width: 279
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d30763217d2d7974fb2c99903a71ccea
+      internalID: 1611368598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 824
+        width: 268
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a8cd99e020f4be49ac7b0d79c775403
+      internalID: 2024945571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 816
+        width: 272
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adeff816a89136c4d8020bbe09dc5c18
+      internalID: -872028255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 813
+        width: 259
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05493845cdaeafd4cb1e49674bbe83ba
+      internalID: -810867244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 812
+        width: 262
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221648af5f760434d9dfa80c5bdcaf1e
+      internalID: 1871860275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 820
+        width: 257
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ddb96cff03729947bc23d25fa4890ec
+      internalID: -774256610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 471
+        width: 272
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054320198fec0b24f91b3b4a1a4ee947
+      internalID: -538442166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 483
+        width: 275
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8332c3de9f6ed374b9fbde9ca263fe65
+      internalID: -657738476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 480
+        width: 266
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80675e31eea1c314c8ac2c017f867648
+      internalID: -1195352147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 476
+        width: 276
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a494a8cd3fa9d419064967923e6c71
+      internalID: 1937261681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 458
+        width: 279
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b7c0a33ca2927543b224184063020e2
+      internalID: 578830565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 128
+        width: 275
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2234223b7c0013046a74694c8ea6d21b
+      internalID: 513578267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 116
+        width: 284
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96034bf5196e144099051870d247db8
+      internalID: -459198623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 123
+        width: 276
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d193469b0f5fe9a488ebff31e47ed03a
+      internalID: 1749332887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 121
+        width: 276
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143b00575806c574da5218117cf35aa4
+      internalID: 1130711302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fruit Sprite Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 111
+        width: 276
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d4150663f6045943b3d17f840376fb0
+      internalID: 2019824442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b31429c19af12114fa2ae1bebdf111ff
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Fruit Sprite Sheet_0: -1547680025
+      Fruit Sprite Sheet_1: 1485878251
+      Fruit Sprite Sheet_10: 2024945571
+      Fruit Sprite Sheet_11: -872028255
+      Fruit Sprite Sheet_12: -810867244
+      Fruit Sprite Sheet_13: 1871860275
+      Fruit Sprite Sheet_14: -774256610
+      Fruit Sprite Sheet_15: -538442166
+      Fruit Sprite Sheet_16: -657738476
+      Fruit Sprite Sheet_17: -1195352147
+      Fruit Sprite Sheet_18: 1937261681
+      Fruit Sprite Sheet_19: 578830565
+      Fruit Sprite Sheet_2: -531236737
+      Fruit Sprite Sheet_20: 513578267
+      Fruit Sprite Sheet_21: -459198623
+      Fruit Sprite Sheet_22: 1749332887
+      Fruit Sprite Sheet_23: 1130711302
+      Fruit Sprite Sheet_24: 2019824442
+      Fruit Sprite Sheet_3: -1582860227
+      Fruit Sprite Sheet_4: -930760366
+      Fruit Sprite Sheet_5: -1538519009
+      Fruit Sprite Sheet_6: -540991890
+      Fruit Sprite Sheet_7: -310785561
+      Fruit Sprite Sheet_8: -1907460523
+      Fruit Sprite Sheet_9: 1611368598
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
