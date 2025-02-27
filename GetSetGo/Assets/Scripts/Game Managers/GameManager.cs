@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
 
         if (firstCard.m_cardId == secondCard.m_cardId)
         {
+            m_audioManager.PlayMatchSound();
             firstCard.SetMatched();
             secondCard.SetMatched();
             m_score++;
@@ -170,6 +171,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            m_audioManager.PlayMismatchSound();
             yield return new WaitForSeconds(0.5f);
             firstCard.Flip();
             secondCard.Flip();
@@ -183,6 +185,7 @@ public class GameManager : MonoBehaviour
     }
     private void ShowGameOver()
     {
+        m_audioManager.PlayWinSound();
         m_gameOverText.gameObject.SetActive(true);
         m_saveButton.SetActive(false);
         m_loadButton.SetActive(false);
@@ -195,7 +198,6 @@ public class GameManager : MonoBehaviour
             Destroy(card.gameObject);
         }
         m_cards.Clear();
-
     }
     private void ClearBoard()
     {
