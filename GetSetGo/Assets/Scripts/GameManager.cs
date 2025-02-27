@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private int m_turns = 0;
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private TextMeshProUGUI m_turnsText;
+    [SerializeField] private TextMeshProUGUI m_gameOverText;
     [Header("Card Grid Settings")]
     [SerializeField] int m_numOfCardInRow = 2;
     [SerializeField] int m_numOfCardInColumn = 3;
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     [Space(6)]
     [SerializeField] float m_horizontalCardSpacing = 0.5f;
     [SerializeField] float m_verticalCardSpacing = 0.5f;
+    [Header("UI Elements")]
+    [SerializeField] private GameObject m_saveButton;
+    [SerializeField] private GameObject m_loadButton;
+    [SerializeField] private GameObject m_scorePanel;
 
     private void Awake()
     {
@@ -59,6 +64,10 @@ public class GameManager : MonoBehaviour
 
     public void InitializeGame(int a_rows, int a_columns)
     {
+        m_gameOverText.gameObject.SetActive(false);
+        m_saveButton.SetActive(true);
+        m_loadButton.SetActive(true);
+        m_scorePanel.SetActive(true);
         m_gamePlayPanel.SetActive(true);
         ClearBoard();
         CreateBoard(a_rows, a_columns);
@@ -149,14 +158,14 @@ public class GameManager : MonoBehaviour
             m_score++;
             UpdateScoreAndTurns();
             
-            // Wait a moment before removing the cards
-            yield return new WaitForSeconds(0.5f);
+            // Check for game over
+            if (IsGameComplete())
+            {
+                yield return new WaitForSeconds(1f); // Wait a moment before showing game over
+                ShowGameOver();
+            }
             
-            // Remove the matched cards from the scene and the list
-            m_cards.Remove(m_firstSelectedCard);
-            m_cards.Remove(m_secondSelectedCard);
-            Destroy(m_firstSelectedCard.gameObject);
-            Destroy(m_secondSelectedCard.gameObject);
+            yield return new WaitForSeconds(0.5f);
         }
         else
         {
@@ -169,8 +178,32 @@ public class GameManager : MonoBehaviour
         m_secondSelectedCard = null;
         m_isInputEnabled = true;
     }
+    private bool IsGameComplete()
+    {
+        return m_cards.All(card => card.m_isMatched);
+    }
+    private void ShowGameOver()
+    {
+        m_gameOverText.gameObject.SetActive(true);
+        m_saveButton.SetActive(false);
+        m_loadButton.SetActive(false);
+        m_scorePanel.SetActive(false);
+        
+        m_gameOverText.text = $"Game Over!\nScore: {m_score}\nTurns: {m_turns}\n\nClick Home \nfor Main Menu";
+
+        foreach (Card card in m_cards)
+        {
+            Destroy(card.gameObject);
+        }
+        m_cards.Clear();
+
+    }
     private void ClearBoard()
     {
+        m_gameOverText.gameObject.SetActive(false);
+        m_saveButton.SetActive(true);
+        m_loadButton.SetActive(true);
+        m_scorePanel.SetActive(true);
         foreach (Card card in m_cards)
         {
             Destroy(card.gameObject);
