@@ -62,19 +62,19 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         // Hover start logic
-        Debug.Log($"Entered card number {m_cardId}");
+        // Debug.Log($"Entered card number {m_cardId}");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         // Hover end logic
-        Debug.Log($"Exited card number {m_cardId}");
+        // Debug.Log($"Exited card number {m_cardId}");
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         // Click logic
-        Debug.Log($"Clicked card number {m_cardId}");
+        // Debug.Log($"Clicked card number {m_cardId}");
 
         GameManager.Instance.OnCardClicked(this);
     }

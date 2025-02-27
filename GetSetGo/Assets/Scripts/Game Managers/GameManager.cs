@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
         m_gamePlayPanel.SetActive(true);
         ClearBoard();
         CreateBoard(a_rows, a_columns);
+
     }
 
     private void CreateBoard(int a_rows, int a_columns)
@@ -124,6 +125,7 @@ public class GameManager : MonoBehaviour
 
         // Set camera position with the calculated distance
         m_mainCamera.transform.DOMove(new Vector3(center.x, center.y, -requiredDistance), 1f);
+        StartCoroutine(PreviewCard());
     }
     public void OnCardClicked(Card card)
     {
@@ -250,33 +252,59 @@ public class GameManager : MonoBehaviour
         // Clear existing board
         ClearBoard();       
 
-        // Calculate rows and columns from saved data
         int totalCards = loadedData.cardStates.Count;
-        int rows = m_numOfCardInRow;
-        int columns = m_numOfCardInColumn;
+        
+        // Determine grid size based on total cards
+        int rows, columns;
+        if (totalCards == 4) // 2x2 grid
+        {
+            rows = 2;
+            columns = 2;
+        }
+        else if (totalCards == 6) // 2x3 grid
+        {
+            rows = 2;
+            columns = 3;
+        }
+        else if (totalCards == 30) // 5x6 grid
+        {
+            rows = 5;
+            columns = 6;
+        }
+        else
+        {
+            Debug.LogError("Invalid number of cards in saved game");
+            return;
+        }
 
-        // Recreate the board with saved state
-        float cardWidth = m_cardWidth;
-        float cardHeight = m_cardHeight;
+        // Update class variables to match current grid size
+        m_numOfCardInRow = rows;
+        m_numOfCardInColumn = columns;
 
+        // Calculate spacing and offsets
+        float totalWidth = columns * m_cardWidth + (columns - 1) * m_horizontalCardSpacing;
+        float totalHeight = rows * m_cardHeight + (rows - 1) * m_verticalCardSpacing;
+        float startX = -totalWidth / 2f + m_cardWidth / 2f;
+        float startY = totalHeight / 2f - m_cardHeight / 2f;
+
+        // Create and position cards
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)
             {
                 int index = row * columns + col;
                 if (index >= totalCards) break;
-                
-                Vector3 position = new Vector3(
-                    col * cardWidth + col * m_horizontalCardSpacing - (columns - 1) * cardWidth * 0.5f,
-                    row * -cardHeight + row * -m_verticalCardSpacing + (rows - 1) * cardHeight * 0.5f,
-                    0
-                );
-                
+
+                // Calculate position
+                float xPos = startX + col * (m_cardWidth + m_horizontalCardSpacing);
+                float yPos = startY - row * (m_cardHeight + m_verticalCardSpacing);
+                Vector3 position = new Vector3(xPos, yPos, 0);
+
+                // Create card
                 CardState savedState = loadedData.cardStates[index];
                 Card card = Instantiate(m_cardPrefab, position, Quaternion.identity, m_cardContainer);
                 card.Initialize(savedState.id, m_cardSprites[savedState.id]);
                 
-                // Restore card state
                 if (savedState.isMatched)
                 {
                     card.SetMatched();
@@ -290,6 +318,19 @@ public class GameManager : MonoBehaviour
                 m_cards.Add(card);
             }
         }
+
+        // Calculate camera position
+        float padding = 1.1f; // Add some padding around the grid
+        float fov = 60f * Mathf.Deg2Rad;
+        float aspect = m_mainCamera.aspect;
+
+        // Calculate required distance to fit both width and height
+        float distanceWidth = (totalWidth * padding) / (2f * Mathf.Tan(fov * 0.5f * aspect));
+        float distanceHeight = (totalHeight * padding) / (2f * Mathf.Tan(fov * 0.5f));
+        float requiredDistance = Mathf.Max(distanceWidth, distanceHeight);
+
+        // Set camera position
+        m_mainCamera.transform.DOMove(new Vector3(0, 0, -requiredDistance), 1f);
         
         // Restore game state
         m_score = loadedData.score;
@@ -317,6 +358,23 @@ public class GameManager : MonoBehaviour
         {
             m_loadButton.SetActive(PlayerPrefs.HasKey("SavedGame"));
         }
+    }
+    
+    IEnumerator PreviewCard()
+    {
+        m_isInputEnabled = false;
+        yield return new WaitForSeconds(0.5f);
+        foreach (Card card in m_cards){
+            card.Flip();
+            yield return new WaitForSeconds(0.06f);
+        }
+        yield return new WaitForSeconds(1f);
+
+        foreach (Card card in m_cards){
+            card.Flip();
+            yield return new WaitForSeconds(0.06f);
+        }
+        m_isInputEnabled = true;
     }
 }
 [System.Serializable]
