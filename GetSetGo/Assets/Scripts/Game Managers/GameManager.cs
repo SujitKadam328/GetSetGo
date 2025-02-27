@@ -7,43 +7,47 @@ using DG.Tweening;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
+    /// <summary>
+    /// Singleton instance of the GameManager
+    /// </summary>
     public static GameManager Instance;
     [Header("Game Settings")]
-    [SerializeField] GameObject m_gamePlayPanel = null;
-    [SerializeField] GameObject m_mainMenuPanel = null;
-    [SerializeField] bool m_isInputEnabled = false;
-    [SerializeField] private Camera m_mainCamera;
+    [SerializeField] GameObject m_gamePlayPanel = null;        // Panel containing gameplay UI elements
+    [SerializeField] GameObject m_mainMenuPanel = null;        // Panel containing main menu UI elements
+    [SerializeField] bool m_isInputEnabled = false;            // Flag to control player input
+    [SerializeField] private Camera m_mainCamera;              // Reference to main game camera
     [Header("Card Data")]
-    [SerializeField] private Card m_cardPrefab;
-    [SerializeField] private Transform m_cardContainer;
-    [SerializeField] private List<Card> m_cards = new List<Card>();
-    [SerializeField] private List<Sprite> m_cardSprites;
+    [SerializeField] private Card m_cardPrefab;                // Prefab for card objects
+    [SerializeField] private Transform m_cardContainer;         // Parent transform for spawned cards
+    [SerializeField] private List<Card> m_cards = new List<Card>();        // List of all active cards
+    [SerializeField] private List<Sprite> m_cardSprites;       // Available card face sprites
    [Header("Game Data - Active Cards")]
-    private List<Card> m_firstSelectedCards = new List<Card>();
-    private List<Card> m_secondSelectedCards = new List<Card>();
+    private List<Card> m_firstSelectedCards = new List<Card>();     // Cards selected as first choice
+    private List<Card> m_secondSelectedCards = new List<Card>();    // Cards selected as second choice
     [Space]
     [Header("Audio Settings")]
-    [SerializeField] private AudioManager m_audioManager;
+    [SerializeField] private AudioManager m_audioManager;      // Reference to audio management system
     [Header("Score Settings")]
-    private int m_score = 0;
-    private int m_turns = 0;
-    [SerializeField] private TextMeshProUGUI m_scoreText;
-    [SerializeField] private TextMeshProUGUI m_turnsText;
-    [SerializeField] private TextMeshProUGUI m_gameOverText;
+    private int m_score = 0;                                   // Current game score
+    private int m_turns = 0;                                   // Number of turns taken
+    [SerializeField] private TextMeshProUGUI m_scoreText;      // UI text for score display
+    [SerializeField] private TextMeshProUGUI m_turnsText;      // UI text for turns display
+    [SerializeField] private TextMeshProUGUI m_gameOverText;   // UI text for game over message
     [Header("Card Grid Settings")]
-    [SerializeField] int m_numOfCardInRow = 2;
-    [SerializeField] int m_numOfCardInColumn = 3;
+    [SerializeField] int m_numOfCardInRow = 2;                // Number of cards per row
+    [SerializeField] int m_numOfCardInColumn = 3;             // Number of cards per column
     [Space(6)]
-    [SerializeField] float m_cardWidth = 3.0f;
-    [SerializeField] float m_cardHeight = 4.0f;
+    [SerializeField] float m_cardWidth = 3.0f;                // Width of each card
+    [SerializeField] float m_cardHeight = 4.0f;               // Height of each card
     [Space(6)]
-    [SerializeField] float m_horizontalCardSpacing = 0.5f;
-    [SerializeField] float m_verticalCardSpacing = 0.5f;
+    [SerializeField] float m_horizontalCardSpacing = 0.5f;    // Horizontal spacing between cards
+    [SerializeField] float m_verticalCardSpacing = 0.5f;      // Vertical spacing between cards
     [Header("UI Elements")]
-    [SerializeField] private GameObject m_saveButton;
-    [SerializeField] private GameObject m_loadButton;
-    [SerializeField] private GameObject m_scorePanel;
+    [SerializeField] private GameObject m_saveButton;          // Button to save game state
+    [SerializeField] private GameObject m_loadButton;          // Button to load saved game
+    [SerializeField] private GameObject m_scorePanel;          // Panel displaying score information
 
+    // Singleton pattern: Ensures only one instance of GameManager exists
     private void Awake()
     {
         if (Instance == null)
@@ -60,6 +64,11 @@ public class GameManager : MonoBehaviour
         UpdateLoadButtonState();
     }
 
+    /// <summary>
+    /// Initializes a new game with specified grid dimensions
+    /// </summary>
+    /// <param name="a_rows">Number of rows in the card grid</param>
+    /// <param name="a_columns">Number of columns in the card grid</param>
     public void InitializeGame(int a_rows, int a_columns)
     {
         m_gameOverText.gameObject.SetActive(false);
@@ -72,6 +81,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Creates and positions cards in a grid layout and adjusts camera position
+    /// </summary>
+    /// <param name="a_rows">Number of rows in the grid</param>
+    /// <param name="a_columns">Number of columns in the grid</param>
     private void CreateBoard(int a_rows, int a_columns)
     {
         int l_pairsCount = (a_rows * a_columns) / 2;
@@ -125,6 +139,10 @@ public class GameManager : MonoBehaviour
         m_mainCamera.transform.DOMove(new Vector3(center.x, center.y, -requiredDistance), 1f);
         StartCoroutine(PreviewCard());
     }
+    /// <summary>
+    /// Handles card click events and manages card selection logic
+    /// </summary>
+    /// <param name="card">The card that was clicked</param>
     public void OnCardClicked(Card card)
     {
         if (!m_isInputEnabled) return;
@@ -144,6 +162,9 @@ public class GameManager : MonoBehaviour
             StartCoroutine(CheckMatch());
         }
     }
+    /// <summary>
+    /// Checks if selected cards match and updates game state accordingly
+    /// </summary>
     private IEnumerator CheckMatch()
     {
         m_turns++;
@@ -179,10 +200,17 @@ public class GameManager : MonoBehaviour
 
         m_isInputEnabled = true;
     }
+    /// <summary>
+    /// Checks if all cards have been matched
+    /// </summary>
+    /// <returns>True if game is complete, false otherwise</returns>
     private bool IsGameComplete()
     {
         return m_cards.All(card => card.m_isMatched);
     }
+    /// <summary>
+    /// Displays game over screen with final score and cleanup
+    /// </summary>
     private void ShowGameOver()
     {
         m_audioManager.PlayWinSound();
@@ -199,6 +227,9 @@ public class GameManager : MonoBehaviour
         }
         m_cards.Clear();
     }
+    /// <summary>
+    /// Resets the game board and all game state variables
+    /// </summary>
     private void ClearBoard()
     {
         m_gameOverText.gameObject.SetActive(false);
@@ -218,13 +249,18 @@ public class GameManager : MonoBehaviour
         m_secondSelectedCards.Clear();
     }
 
+    /// <summary>
+    /// Returns to main menu and clears the game board
+    /// </summary>
     public void OnClickHome()
     {
         m_gamePlayPanel.SetActive(false);
         ClearBoard();
         m_mainMenuPanel.SetActive(true);
     }
-    // Save/Load functionality
+    /// <summary>
+    /// Saves current game state to PlayerPrefs in JSON format
+    /// </summary>
     public void OnClickSave()
     {
         GameData saveData = new GameData
@@ -244,6 +280,9 @@ public class GameManager : MonoBehaviour
         
         UpdateLoadButtonState();
     }
+    /// <summary>
+    /// Loads and reconstructs game state from saved JSON data
+    /// </summary>
     public void OnClickLoad()
     {
         if (!PlayerPrefs.HasKey("SavedGame")) return;
@@ -348,12 +387,18 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    /// <summary>
+    /// Updates the score and turns display in the UI
+    /// </summary>
     void UpdateScoreAndTurns()
     {
         m_scoreText.text = m_score.ToString();
         m_turnsText.text = m_turns.ToString();
     }
 
+    /// <summary>
+    /// Updates the visibility of the load button based on saved game data
+    /// </summary>
     private void UpdateLoadButtonState()
     {
         if (m_loadButton != null)
@@ -362,6 +407,9 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Shows cards briefly at start of game for player preview
+    /// </summary>
     IEnumerator PreviewCard()
     {
         m_isInputEnabled = false;
@@ -379,17 +427,23 @@ public class GameManager : MonoBehaviour
         m_isInputEnabled = true;
     }
 }
+/// <summary>
+/// Data structure for saving game state
+/// </summary>
 [System.Serializable]
 public class GameData
 {
-    public int score;
-    public int turns;
-    public List<CardState> cardStates;
+    public int score;              // Current game score
+    public int turns;              // Number of turns taken
+    public List<CardState> cardStates;  // State of each card in the game
 }
+/// <summary>
+/// Data structure for individual card state
+/// </summary>
 [System.Serializable]
 public class CardState
 {
-    public int id;
-    public bool isFlipped;
-    public bool isMatched;
+    public int id;                 // Card identifier
+    public bool isFlipped;         // Whether card is face up
+    public bool isMatched;         // Whether card has been matched
 }
