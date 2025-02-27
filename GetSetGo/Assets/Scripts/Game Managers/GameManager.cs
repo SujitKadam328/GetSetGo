@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform m_cardContainer;
     [SerializeField] private List<Card> m_cards = new List<Card>();
     [SerializeField] private List<Sprite> m_cardSprites;
-    [Header("Game Data - Active Cards")]
-    private Card m_firstSelectedCard;
-    private Card m_secondSelectedCard;
+   [Header("Game Data - Active Cards")]
+    private List<Card> m_firstSelectedCards = new List<Card>();
+    private List<Card> m_secondSelectedCards = new List<Card>();
     [Space]
     [Header("Audio Settings")]
     [SerializeField] private AudioManager m_audioManager;
@@ -127,22 +127,18 @@ public class GameManager : MonoBehaviour
     }
     public void OnCardClicked(Card card)
     {
-        // if (!m_isInputEnabled) return;
-
         if (card.m_isMatched || card.m_isFlipped) return;
 
         m_audioManager.PlayFlipSound();
-
         card.Flip();
 
-        if (m_firstSelectedCard == null)
+        if (m_firstSelectedCards.Count <= m_secondSelectedCards.Count)
         {
-            m_firstSelectedCard = card;
+            m_firstSelectedCards.Add(card);
         }
         else
         {
-            m_secondSelectedCard = card;
-
+            m_secondSelectedCards.Add(card);
             StartCoroutine(CheckMatch());
         }
     }
@@ -151,17 +147,20 @@ public class GameManager : MonoBehaviour
         m_turns++;
         UpdateScoreAndTurns();
 
-        if (m_firstSelectedCard.m_cardId == m_secondSelectedCard.m_cardId)
+        // Get the last cards from both lists
+        Card firstCard = m_firstSelectedCards[m_firstSelectedCards.Count - 1];
+        Card secondCard = m_secondSelectedCards[m_secondSelectedCards.Count - 1];
+
+        if (firstCard.m_cardId == secondCard.m_cardId)
         {
-            m_firstSelectedCard.SetMatched();
-            m_secondSelectedCard.SetMatched();
+            firstCard.SetMatched();
+            secondCard.SetMatched();
             m_score++;
             UpdateScoreAndTurns();
             
-            // Check for game over
             if (IsGameComplete())
             {
-                yield return new WaitForSeconds(1f); // Wait a moment before showing game over
+                yield return new WaitForSeconds(1f);
                 ShowGameOver();
             }
             
@@ -170,12 +169,10 @@ public class GameManager : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(0.5f);
-            m_firstSelectedCard.Flip();
-            m_secondSelectedCard.Flip();
+            firstCard.Flip();
+            secondCard.Flip();
         }
 
-        m_firstSelectedCard = null;
-        m_secondSelectedCard = null;
         m_isInputEnabled = true;
     }
     private bool IsGameComplete()
@@ -213,8 +210,8 @@ public class GameManager : MonoBehaviour
         m_turns = 0;
         m_scoreText.text = "0";     
         m_turnsText.text = "0";
-        m_firstSelectedCard = null;
-        m_secondSelectedCard = null;
+        m_firstSelectedCards.Clear();
+        m_secondSelectedCards.Clear();
     }
 
     public void OnClickHome()
