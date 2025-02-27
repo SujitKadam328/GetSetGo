@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridSelection : MonoBehaviour
 {
-    public GameObject m_mainMenuPanel;
+    [SerializeField] private GameObject m_mainMenuPanel = null;
 
     public void OnClickTwoByTwo()
     {
