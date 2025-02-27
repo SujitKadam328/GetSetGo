@@ -59,14 +59,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         m_isGameStarted = true;
-        // m_isInputEnabled = true;
+        UpdateLoadButtonState();
     }
 
     public void InitializeGame(int a_rows, int a_columns)
     {
         m_gameOverText.gameObject.SetActive(false);
         m_saveButton.SetActive(true);
-        m_loadButton.SetActive(true);
+        UpdateLoadButtonState();
         m_scorePanel.SetActive(true);
         m_gamePlayPanel.SetActive(true);
         ClearBoard();
@@ -240,33 +240,28 @@ public class GameManager : MonoBehaviour
         string json = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString("SavedGame", json);
         PlayerPrefs.Save();
+        
+        UpdateLoadButtonState();
     }
     public void OnClickLoad()
     {
-        // if (!PlayerPrefs.HasKey("SavedGame")) return;
-        // string json = PlayerPrefs.GetString("SavedGame");
-        // GameData loadedData = JsonUtility.FromJson<GameData>(json);
-        // // Implement loading logic here
-        // m_score = loadedData.score;
-        // m_turns = loadedData.turns;
-
         if (!PlayerPrefs.HasKey("SavedGame")) return;
-    
+
         string json = PlayerPrefs.GetString("SavedGame");
         GameData loadedData = JsonUtility.FromJson<GameData>(json);
-    
+
         // Clear existing board
         ClearBoard();       
-    
+
         // Calculate rows and columns from saved data
         int totalCards = loadedData.cardStates.Count;
         int rows = m_numOfCardInRow;
         int columns = m_numOfCardInColumn;
-    
+
         // Recreate the board with saved state
         float cardWidth = m_cardWidth;
         float cardHeight = m_cardHeight;
-    
+
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)
@@ -289,9 +284,10 @@ public class GameManager : MonoBehaviour
                 {
                     card.SetMatched();
                 }
-                else if (savedState.isFlipped)
+                
+                if (savedState.isFlipped)
                 {
-                    card.Flip();
+                    card.FlipOnLoad();
                 }
 
                 m_cards.Add(card);
@@ -307,13 +303,23 @@ public class GameManager : MonoBehaviour
         m_gamePlayPanel.SetActive(true);
         m_mainMenuPanel.SetActive(false);
 
-        
+        // Clear the saved game data
+        PlayerPrefs.DeleteKey("SavedGame");
+        PlayerPrefs.Save();
     }
 
     void UpdateScoreAndTurns()
     {
         m_scoreText.text = m_score.ToString();
         m_turnsText.text = m_turns.ToString();
+    }
+
+    private void UpdateLoadButtonState()
+    {
+        if (m_loadButton != null)
+        {
+            m_loadButton.SetActive(PlayerPrefs.HasKey("SavedGame"));
+        }
     }
 }
 [System.Serializable]

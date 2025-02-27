@@ -25,9 +25,16 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         if (m_isMatched) return;
 
-        // flip count++
-
         m_isFlipped = !m_isFlipped;
+        float targetRotation = m_isFlipped ? 180f : 0f;
+        transform.DORotate(new Vector3(0, targetRotation, 0), m_flipDuration)
+            .SetEase(Ease.InOutSine);
+    }
+
+    public void FlipOnLoad()
+    {
+        m_isFlipped = !m_isFlipped;
+        
         float targetRotation = m_isFlipped ? 180f : 0f;
         transform.DORotate(new Vector3(0, targetRotation, 0), m_flipDuration)
             .SetEase(Ease.InOutSine);
