@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [Header("Game Settings")]
     [SerializeField] GameObject m_gamePlayPanel = null;
     [SerializeField] GameObject m_mainMenuPanel = null;
-    [SerializeField] bool m_isGameStarted = false;
     [SerializeField] bool m_isInputEnabled = false;
     [SerializeField] private Camera m_mainCamera;
     [Header("Card Data")]
@@ -58,7 +57,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        m_isGameStarted = true;
         UpdateLoadButtonState();
     }
 
@@ -129,6 +127,8 @@ public class GameManager : MonoBehaviour
     }
     public void OnCardClicked(Card card)
     {
+        if (!m_isInputEnabled) return;
+
         if (card.m_isMatched || card.m_isFlipped) return;
 
         m_audioManager.PlayFlipSound();
